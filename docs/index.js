@@ -2,6 +2,9 @@
 //var eos_token_address_kovan = "0x74b279820bdf69bed7e99fd1000df2e1983a5caf"
 var eos_sale_address_kovan  = "0xc75c91214a4e9c1b8f055e61d8577cd988561b47"
 var eos_token_address_kovan = "0xa49047938b5a3117c22dab31c1be03973b1d2bca"
+var eos_sale_address_mainnet = "0xd0a6E6C54DbC68Db5db3A091B171A77407Ff7ccf"
+var eos_token_address_mainnet = "0x86fa049857e0209aa7d9e616f7eb3b3b78ecfdb0"
+
 var eos_sale, eos_token
 
 var state
@@ -11,7 +14,12 @@ var kovan = {
   genesis: "0xa3c565fc15c7478862d50ccd6561e3c06b24cc509bf388941c25ea985ce32cb9",
 }
 
-var chain = kovan
+var mainnet = {
+  name: "Mainnet",
+  genesis: "0xd4e56740f876aef8c010b86a40d5f56745a118d0906a34e69aec8c0db1cb8fa3",
+}
+
+var chain = mainnet
 
 var WAD = 1000000000000000000
 
@@ -72,8 +80,8 @@ function hidePanes() {
       </div>
     `
   } else {
-    eos_sale  = web3.eth.contract(eos_sale_abi).at(eos_sale_address_kovan)
-    eos_token = web3.eth.contract(eos_token_abi).at(eos_token_address_kovan)
+    eos_sale  = web3.eth.contract(eos_sale_abi).at(eos_sale_address_mainnet)
+    eos_token = web3.eth.contract(eos_token_abi).at(eos_token_address_mainnet)
 
     web3.eth.getBlock(0, hopefully(block => {
       if (block.hash == chain.genesis) {
